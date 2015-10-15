@@ -119,13 +119,13 @@ function connectSuccess(data){
 }
         
 function servSuccess(data){
-	//alert("service success");
+	alert("service success");
 	bluetoothle.characteristics(charSuccess,charFail,{"address":address,"serviceUuid":serviceUuid,"characteristicUuids":[]});
 }
 
         
 function charSuccess(data){
-	//alert("char success");
+	alert("char success");
 	bluetoothle.subscribe(subSuccess, subFail, {"address":address,"serviceUuid":serviceUuid,"characteristicUuid":charUuid, "isNotification":true });
 }
         
@@ -155,7 +155,7 @@ function discoverSuccess(data){
 }
                 
 function subSuccess(data){
-	//alert("subscribe success");
+	alert("subscribe success");
 	
 	if (data.status == "subscribed"){
 		$('#connectBtn').html("Disconnect");
