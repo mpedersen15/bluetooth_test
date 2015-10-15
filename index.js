@@ -104,6 +104,7 @@ function stopSuccess(data){
 		
 function connectSuccess(data){
 	//alert('connect success');
+	platform = device.platform;
 	if (data.status === "connected"){
 		if (platform == "iOS"){
 			bluetoothle.services(servSuccess,servFail,{ "address": address,"serviceUuids": [] });
