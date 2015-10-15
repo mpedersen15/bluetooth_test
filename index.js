@@ -40,7 +40,8 @@ var app = {
 		if (typeof jQuery == 'undefined') {  
 			alert('jQuery has not been loaded!');  
 		}	
-		
+		$('#reconnectPopup, #forceReconnectPopup, #confirmHatPopup, #connectPopup, #timeoutPopup, #noDevicesPopup, #noDataPopup, #forgetPopup, #startPopup, #endPopup, #noSavedPopup, #ratingPopup, #syncFailPopup, #algPrefPopup, #bluetoothPopup, #loadingPopup, #lastSleepHelp, #sleepLabHelp, #trendsHelp, #settingsHelp,#languageHelp, #startingPopup, #processingPopup, #retrievingPopup, #connectingPopup, #disconnectingPopup,#changingPopup, #loadingCover').enhanceWithin().popup({positionTo: "window"});
+
 		if (device.platform == "iOS"){
 			StatusBar.backgroundColorByHexString("#33495D");
 		}
