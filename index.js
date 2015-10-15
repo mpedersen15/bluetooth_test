@@ -163,6 +163,7 @@ function subSuccess(data){
 	alert("subscribe success");
 	
 	if (data.status == "subscribed"){
+		connected = true;
 		$('#connectBtn').html("Disconnect");
 	}else if(data.status == "subscribedResult"){
 		var returnedBytes = bluetoothle.encodedStringToBytes(data.value);
