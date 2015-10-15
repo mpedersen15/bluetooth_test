@@ -23,7 +23,8 @@ var address,
 	platform,
 	desiredName = "SSV1_00000",
 	serviceUuid = "ffe0",
-	charUuid = "ffe1";
+	charUuid = "ffe1",
+	connected = false;
 
 var app = {
     // Application Constructor
@@ -73,7 +74,11 @@ function initSuccess() {
 	var connectBtn = $('#connectBtn');
 	
 	connectBtn.on('click',function(){
-		bluetoothle.startScan(scanSuccess,scanFail,null);
+		if (connected){
+			bluetoothle.disconnect(disconnectSuccess,disconnectFail,{"address":address});
+		}else{
+			bluetoothle.startScan(scanSuccess,scanFail,null);
+		}
 	});
 	
 	
@@ -133,6 +138,7 @@ function disconnectSuccess(data){
         
 function closeSuccess(data){
 	alert("close success");	
+	$('#connectBtn').html("Connect");
 }
 		
 function writeSuccess(data){
@@ -152,7 +158,7 @@ function subSuccess(data){
 	//alert("subscribe success");
 	
 	if (data.status == "subscribed"){
-		
+		$('#connectBtn').html("Disconnect");
 	}else if(data.status == "subscribedResult"){
 		var returnedBytes = bluetoothle.encodedStringToBytes(data.value);
 		//alert("received: "+JSON.stringify(returnedBytes));
