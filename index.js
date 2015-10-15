@@ -82,7 +82,7 @@ function initSuccess() {
 // Success Callbacks
         
 function scanSuccess(data){
-	alert('scan success');
+	//alert('scan success');
 	if (data.status == "scanResult"){
 		if (data.name === desiredName){
 			address = data.address;
