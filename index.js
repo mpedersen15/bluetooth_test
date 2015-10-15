@@ -140,6 +140,7 @@ function disconnectSuccess(data){
 function closeSuccess(data){
 	alert("close success");	
 	$('#connectBtn').html("Connect");
+	connected = false;
 }
 		
 function writeSuccess(data){
