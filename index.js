@@ -132,15 +132,16 @@ function charSuccess(data){
         
 function disconnectSuccess(data){
 	if (data.status == "disconnected"){
-		//alert("disconnect success");	
+		alert("disconnect success");	
 		bluetoothle.close(closeSuccess, closeFail,{ "address": address});
 	}
 }
         
 function closeSuccess(data){
 	alert("close success");	
-	$('#connectBtn').html("Connect");
 	connected = false;
+	$('#connectBtn').html("Connect");
+	
 }
 		
 function writeSuccess(data){
