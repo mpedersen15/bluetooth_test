@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="com.mindrocket.BLEtest" version="1.0.2" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0" xmlns:android="http://schemas.android.com/apk/res/android">
+    <name>BT Test</name>
+    <description>
+	Multi-page app testing functionality of Rand Dusing's Bluetooth LE plugin
+    </description>
+    <author email="" href="http://cordova.io">
+    </author>
+	<content src="index.html" />
+	<access origin="*" />
+
+	<gap:platform name="ios" />
+	<gap:platform name="android" />
+	<gap:plugin name="com.randdusing.bluetoothle" version="2.0.0" />
+	<gap:plugin name="org.apache.cordova.device" version="0.2.12" />
+	<gap:plugin name="org.apache.cordova.console" version="0.2.11" />
+	<gap:plugin name="com.phonegap.plugin.statusbar" version="1.1.0" />
+	<gap:plugin name="org.apache.cordova.splashscreen" version="0.3.4" />
+	
+	
+	<preference name="StatusBarOverlaysWebView" value="false" />
+	<preference name="DisallowOverscroll" value="true"/>  
+	<preference name="orientation" value="portrait" />
+	<preference name="AutoHideSplashScreen" value="false" />
+	<preference name="target-device" value="handset" />
+	<preference name="SplashScreen" value="splash" />
+	<preference name="SplashScreenDelay" value="7000" />
+	<preference name="SplashMaintainAspectRatio" value="true" />
+	<preference name="deployment-target" value="7.0" />
+	<preference name="android-minSdkVersion" value="18" />
+	
+	<feature name="http://api.phonegap.com/1.0/network" />
+</widget>

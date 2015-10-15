@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+
+		<script src="js/jquery-1.11.3.min.js"></script>
+        <script src="js/jquery.mobile-1.4.5.min.js"></script>
+			
+		<link rel="stylesheet" href="css/jquery.mobile-1.4.5.css" />
+        <link href="css/font-awesome.min.css" rel="stylesheet" type="text/css" >
+		<!-- <link rel="stylesheet" type="text/css" href="css/style.css" /> -->
+        
+        
+        
+        <title>Bluetooth Test Development</title>
+		
+		<script type="text/javascript">
+		
+		</script>
+		
+		<style type="text/css">
+		
+		</style>
+    </head>
+    <body>
+		<div data-role="page" id="page1">
+			<div data-role="header"><h1>Page 1</h1></div>
+			<div data-role="content">
+				<div data-role="button" class="ui-btn" id="connectBtn">Connect</div>
+				<div data-role="button" class="ui-btn" id="toPage2">Go To Page 2</div>
+			</div>
+		</div>
+				
+		<div data-role="page" id="page2">
+			<div data-role="header"><h1>Page 2</h1></div>
+			<div data-role="content">
+				<div data-role="button" class="ui-btn" id="toPage1">Go To Page 1</div>
+			</div>
+		</div>
+				
+				
+				
+			
+			<!-- FOOTER -->
+			<!-- /FOOTER -->
+			
+			<!-- DIALOGS -->
+			
+			<!-- DISCONNECT DIALOG -->
+			<div id="reconnectPopup" data-theme="" style="background: white;" data-dismissible="false">
+				<div data-role="header"><h1 style="margin: 0 auto !important" data-i18n="popup.disconnected.title">Disconnected</h1></div>
+				<div data-role="content" class="padded-div" >
+					<p data-i18n="popup.disconnected.description">We've lost connection to your Sleep Shepherd. Make sure it is powered on and try again.</p>
+					
+				</div>
+				<div class="popup-footer" >
+					<!-- <div class="ui-block-a"><a href="#" id="yesReconnect" class="stand-alone" data-role="button" data-i18n="popup.disconnected.yes">Yes</a></div> -->
+					<!-- <div class="ui-block-b"> --><a href="#" id="noReconnect" class="stand-alone" data-role="button" data-i18n="popup.nodevices.close">Close</a><!-- </div> -->
+				</div>
+			</div>
+			
+			<!-- CONNECTION TIMEOUT ALERT -->
+			<div id="timeoutPopup" data-theme="" style="background: white;" data-dismissible="true">
+				<div data-role="header"><h1 style="margin: 0 auto !important" data-i18n="popup.connecttimeout.title">Connection Failed</h1></div>
+				<div data-role="content" class="padded-div" >
+					<p data-i18n="popup.connecttimeout.description" >Failed to connect to a Sleep Shepherd. Make sure your hat is turned on, and use the CONNECT button to try again</p>
+					
+				</div>
+				<div class="popup-footer">
+					<a href="#" id="closeTimeout" class="stand-alone" data-role="button" data-i18n="popup.connecttimeout.close">Close</a>
+				</div>
+			</div>
+			
+			<!-- NO DEVICES ALERT -->
+			<div id="noDevicesPopup" data-theme="" style="background: white;" data-dismissible="true">
+				<div data-role="header"><h1 style="margin: 0 auto !important" data-i18n="popup.nodevices.title">No Devices Found</h1></div>
+				<div data-role="content" class="padded-div" >
+					<p data-i18n="popup.nodevices.description">Couldn't detect any Sleep Shepherd hats. Please make sure your hat is on and use the CONNECT button to try again.</p>
+					
+				</div>
+				<div class="popup-footer">
+					<a href="#" id="closeNoDevices" class="stand-alone" data-role="button"  data-i18n="popup.nodevices.close">Close</a>				
+				</div>
+			</div>
+
+			
+			<!-- BLUETOOTH POPUP -->
+			<div id="bluetoothPopup" data-theme="" style="background: white;" data-dismissible="true">
+				<div data-role="header"><h1 style="margin: 0 auto !important" data-i18n="popup.bluetooth.title">Is bluetooth enabled?</h1></div>
+				<div data-role="content" class="padded-div" >
+					<p data-i18n="popup.bluetooth.description">To get the most out of SleepHat, make sure you have your Sleep Shepherd available and that bluetooth is enabled.</p>
+					<!-- <img src="css/images/ajax-loader.gif"/> -->
+
+				</div>
+				<div class="popup-footer">
+					<a href="#" id="closeBluetooth" class="stand-alone" data-role="button" data-i18n="popup.syncfail.close">Close</a>
+				</div>
+			</div>
+			
+			<!-- LOADING POPUP - CHANGING -->
+			<div id="changingPopup" data-theme="" style="background: white;" data-dismissible="false">
+				<div data-role="content" style="padding: 1em;" class="padded-div center" >
+					<!-- <img src="css/images/ajax-loader.gif"/> -->
+					<p style="margin:0" data-i18n="loading.processing">Processing</p>
+				</div>
+			</div>
+			
+			<!-- LOADING POPUP - STARTING -->
+			<div id="startingPopup" data-theme="" style="background: white;" data-dismissible="false">
+				<div data-role="content" style="padding: 1em;" class="padded-div center" >
+					<img src="css/images/ajax-loader.gif"/>
+					<p style="margin:0" data-i18n="loading.starting" >Starting</p>
+				</div>
+			</div>
+			
+			<!-- LOADING POPUP - RETRIEVING DATA -->
+			<div id="retrievingPopup" data-theme="" style="background: white;" data-dismissible="false">
+				<div data-role="content" style="padding: 1em;" class="padded-div center" >
+					<img src="css/images/ajax-loader.gif"/>
+					<p style="margin:0" data-i18n="loading.retrieving" id="">Retrieving Data</p>
+				</div>
+			</div>
+			
+			<!-- LOADING POPUP - PROCESSING-->
+			<div id="processingPopup" data-theme="" style="background: white;" data-dismissible="false">
+				<div data-role="content" style="padding: 1em;" class="padded-div center" >
+					<img src="css/images/ajax-loader.gif"/>
+					<p style="margin:0" data-i18n="loading.processing" id="">Processing</p>
+				</div>
+			</div>
+			
+			<!-- LOADING POPUP - DISCONNECTING-->
+			<div id="disconnectingPopup" data-theme="" style="background: white;" data-dismissible="false">
+				<div data-role="content" style="padding: 1em;" class="padded-div center" >
+					<img src="css/images/ajax-loader.gif"/>
+					<p style="margin:0" data-i18n="loading.disconnecting" id="">Disconnecting</p>
+				</div>
+			</div>
+			
+			<!-- LOADING POPUP - CONNECTING-->
+			<div id="connectingPopup" data-theme="" style="background: white;" data-dismissible="false">
+				<div data-role="content" style="padding: 1em;" class="padded-div center" >
+					<img src="css/images/ajax-loader.gif"/>
+					<p style="margin:0" data-i18n="settings.btn.connecting" id="description">Connecting</p>
+				</div>
+			</div>
+			
+			<!-- /DIALOGS -->
+			
+			
+			
+       
+        <script type="text/javascript" src="phonegap.js"></script>
+        <script type="text/javascript" src="index.js"></script>
+        <script type="text/javascript">
+            app.initialize();
+        </script>
+    </body>
+</html>
