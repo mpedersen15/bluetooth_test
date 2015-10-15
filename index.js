@@ -75,8 +75,10 @@ function initSuccess() {
 	
 	connectBtn.on('click',function(){
 		if (connected){
+			alert('before disconnect');
 			bluetoothle.disconnect(disconnectSuccess,disconnectFail,{"address":address});
 		}else{
+			alert('before scan');
 			bluetoothle.startScan(scanSuccess,scanFail,null);
 		}
 	});
