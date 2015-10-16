@@ -17,7 +17,14 @@
         <title>Bluetooth Test Development</title>
 		
 		<script type="text/javascript">
-		
+			$(document).on("mobileinit",function() {
+				$.mobile.autoInitializePage = false;
+			}); 
+			
+			$(document).ready(function(){
+				window.location.hash = 'page2';
+				$.mobile.initializePage();
+			});
 		</script>
 		
 		<style type="text/css">
