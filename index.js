@@ -71,7 +71,7 @@ var app = {
 // -- FUNCTIONS -- //
 
 function initSuccess() {
-	var connectBtn = $('#connectBtn');
+	var connectBtn = $('.connectBtn');
 	
 	connectBtn.on('click',function(){
 		if (connected){
